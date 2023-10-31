@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var studentRouter = require('./routes/student');
 var loginRouter = require('./routes/login');
 var courseRouter = require('./routes/course');
+var gradeRouter = require('./routes/grade');
+var studentgradeRouter = require('./routes/studentgrade');
 
 var app = express();
 
@@ -23,6 +25,8 @@ app.use(authenticateToken);
 //suojatut reitit
 app.use('/student', studentRouter);
 app.use('/course', courseRouter);
+app.use('/grade', gradeRouter);
+app.use('/studentgrade', studentgradeRouter);
 
 
 
