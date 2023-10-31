@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "studentmenu.h"
+
 #include <QMainWindow>
 #include <QtNetwork>
 #include <QNetworkAccessManager>
@@ -27,5 +29,7 @@ private:
     QNetworkAccessManager *postManager;
     QNetworkReply *reply;
     QByteArray response_data;
+    StudentMenu *objectStudentMenu;
+    QString username;
 };
 #endif // MAINWINDOW_H

@@ -16,7 +16,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnLogin_clicked()
 {
-    QString username=ui->textUsername->text();
+    username=ui->textUsername->text();
     QString password=ui->textPassword->text();
     QJsonObject jsonObj;
     jsonObj.insert("username",username);
@@ -40,17 +40,26 @@ void MainWindow::loginSlot(QNetworkReply *reply)
     qDebug()<<response_data;
     if(response_data.length()<2){
         qDebug()<<"Palvelin ei vastaa";
+        ui->label->setText("Palvelin ei vastaa");
     }
     else{
         if(response_data=="-4078"){
             qDebug()<<"Virhe tietokanta yhteydessä";
+            ui->labelInfo->setText("Virhe tietokanta yhteydessä");
         }
         else {
             if(response_data!="false" && response_data.length()>20){
                 qDebug()<<"Login Ok";
+                objectStudentMenu=new StudentMenu(this);
+                objectStudentMenu->setUsername(username);
+                objectStudentMenu->showUsername();
+                objectStudentMenu->show();
             }
             else{
                 qDebug()<<"Väärä salasana";
+                ui->labelInfo->setText("Tunnus ja salasana eivät täsmää");
+                ui->textUsername->clear();
+                ui->textPassword->clear();
             }
         }
     }
