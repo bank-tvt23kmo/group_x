@@ -20,7 +20,7 @@ router.get('/:username',
             if (err) {
                 response.json(err);
             } else {
-                response.json(dbResult);
+                response.json(dbResult[0]);
             }
         })
     });

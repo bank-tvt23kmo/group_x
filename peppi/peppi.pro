@@ -12,14 +12,17 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    studentinfo.cpp \
     studentmenu.cpp
 
 HEADERS += \
     mainwindow.h \
+    studentinfo.h \
     studentmenu.h
 
 FORMS += \
     mainwindow.ui \
+    studentinfo.ui \
     studentmenu.ui
 
 # Default rules for deployment.
