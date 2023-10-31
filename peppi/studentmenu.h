@@ -2,6 +2,10 @@
 #define STUDENTMENU_H
 
 #include <QDialog>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
+#include <studentinfo.h>
 
 namespace Ui {
 class StudentMenu;
@@ -20,10 +24,18 @@ public:
 
     void setToken(const QByteArray &newToken);
 
+private slots:
+    void on_btnInfo_clicked();
+    void getInfoSlot(QNetworkReply *reply);
+
 private:
     Ui::StudentMenu *ui;
     QString username;
     QByteArray token;
+    QNetworkAccessManager *getManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+    StudentInfo *objectStudentInfo;
 };
 
 #endif // STUDENTMENU_H
