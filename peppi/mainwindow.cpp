@@ -37,7 +37,7 @@ void MainWindow::on_btnLogin_clicked()
 void MainWindow::loginSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
-    qDebug()<<response_data;
+    //qDebug()<<response_data;
     if(response_data.length()<2){
         qDebug()<<"Palvelin ei vastaa";
         ui->label->setText("Palvelin ei vastaa");
@@ -50,7 +50,9 @@ void MainWindow::loginSlot(QNetworkReply *reply)
         else {
             if(response_data!="false" && response_data.length()>20){
                 qDebug()<<"Login Ok";
+                token="Bearer "+response_data;
                 objectStudentMenu=new StudentMenu(this);
+                objectStudentMenu->setToken(token);
                 objectStudentMenu->setUsername(username);
                 objectStudentMenu->showUsername();
                 objectStudentMenu->show();

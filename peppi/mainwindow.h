@@ -31,5 +31,6 @@ private:
     QByteArray response_data;
     StudentMenu *objectStudentMenu;
     QString username;
+    QByteArray token;
 };
 #endif // MAINWINDOW_H

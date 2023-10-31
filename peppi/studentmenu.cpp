@@ -22,3 +22,9 @@ void StudentMenu::showUsername()
 {
     ui->labelUsername->setText(username);
 }
+
+void StudentMenu::setToken(const QByteArray &newToken)
+{
+    token = newToken;
+    qDebug()<<token;
+}

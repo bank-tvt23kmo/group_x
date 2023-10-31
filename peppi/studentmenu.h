@@ -18,9 +18,12 @@ public:
     void setUsername(const QString &newUsername);
     void showUsername();
 
+    void setToken(const QByteArray &newToken);
+
 private:
     Ui::StudentMenu *ui;
     QString username;
+    QByteArray token;
 };
 
 #endif // STUDENTMENU_H

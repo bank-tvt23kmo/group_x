@@ -14,9 +14,9 @@ router.get('/',
         })
     });
 
-router.get('/:id',
+router.get('/:username',
     function (request, response) {
-        student.getById(request.params.id, function (err, dbResult) {
+        student.getByUsername(request.params.username, function (err, dbResult) {
             if (err) {
                 response.json(err);
             } else {
