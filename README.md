@@ -22,3 +22,17 @@ Luodaan tunnus jolla sovelluksesta kytkeydytään tietokantaan
 create user peppiuser@'localhost' identified by 'peppipass';
 grant all on peppi.* to peppiuser@'localhost';
 </pre>
+
+## .env
+
+Jotta sovellus toimii, pitää backend-kansion juureen laittaa tiedosto **.env**, jossa on rivi 
+<pre>
+MY_TOKEN=ITe8HWkbIKzbG+oVPyj75BkBUUc5Jdw/q9qNvxD+ZYVDhXLm6fAWg3EqGOmBuduIy2GkQbBpnr11mr13DKZBmQ==
+</pre>
+
+Poistan tiedoston reposta, koska repo on public-tyyppinen, joten GitHub alkaa lähettämään minulle emailia, jossa varoittaa tietoturvasta.
+
+Ja lisään .gitignoreen rivin
+<pre>
+backend/.env
+</pre>
