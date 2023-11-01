@@ -1,6 +1,8 @@
 #ifndef STUDENTMENU_H
 #define STUDENTMENU_H
 
+#include "studentgrade.h"
+
 #include <QDialog>
 #include <QtNetwork>
 #include <QNetworkAccessManager>
@@ -27,6 +29,9 @@ public:
 private slots:
     void on_btnInfo_clicked();
     void getInfoSlot(QNetworkReply *reply);
+    void getGradeSlot(QNetworkReply *reply);
+
+    void on_btnGrade_clicked();
 
 private:
     Ui::StudentMenu *ui;
@@ -36,6 +41,7 @@ private:
     QNetworkReply *reply;
     QByteArray response_data;
     StudentInfo *objectStudentInfo;
+    StudentGrade *objectStudentGrade;
 };
 
 #endif // STUDENTMENU_H

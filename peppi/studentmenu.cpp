@@ -61,3 +61,37 @@ void StudentMenu::getInfoSlot(QNetworkReply *reply)
     getManager->deleteLater();
 }
 
+
+void StudentMenu::on_btnGrade_clicked()
+{
+    QString site_url="http://localhost:3000/studentgrade/"+username;
+    QNetworkRequest request((site_url));
+    //WEBTOKEN ALKU
+    request.setRawHeader(QByteArray("Authorization"),(token));
+    //WEBTOKEN LOPPU
+    getManager = new QNetworkAccessManager(this);
+
+    connect(getManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getGradeSlot(QNetworkReply*)));
+
+    reply = getManager->get(request);
+}
+
+void StudentMenu::getGradeSlot(QNetworkReply *reply)
+{
+    response_data=reply->readAll();
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonArray json_array = json_doc.array();
+    QString grades;
+    foreach (const QJsonValue &value, json_array) {
+        QJsonObject json_obj = value.toObject();
+        grades+=QString::number(json_obj["grade"].toInt())+","+json_obj["coursename"].toString()+"\r";
+    }
+
+    qDebug()<<grades;
+    objectStudentGrade=new StudentGrade(this);
+    objectStudentGrade->showGrades(grades);
+    objectStudentGrade->show();
+
+    reply->deleteLater();
+    getManager->deleteLater();
+}
