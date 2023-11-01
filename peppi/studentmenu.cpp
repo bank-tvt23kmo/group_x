@@ -1,3 +1,4 @@
+#include "environment.h"
 #include "studentmenu.h"
 #include "ui_studentmenu.h"
 
@@ -31,7 +32,7 @@ void StudentMenu::setToken(const QByteArray &newToken)
 
 void StudentMenu::on_btnInfo_clicked()
 {
-    QString site_url="http://localhost:3000/student/"+username;
+    QString site_url=Environment::getBaseUrl()+"/student/"+username;
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
     request.setRawHeader(QByteArray("Authorization"),(token));
@@ -64,7 +65,7 @@ void StudentMenu::getInfoSlot(QNetworkReply *reply)
 
 void StudentMenu::on_btnGrade_clicked()
 {
-    QString site_url="http://localhost:3000/studentgrade/"+username;
+    QString site_url=Environment::getBaseUrl()+"/studentgrade/"+username;
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
     request.setRawHeader(QByteArray("Authorization"),(token));

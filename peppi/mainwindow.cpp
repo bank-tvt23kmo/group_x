@@ -1,3 +1,4 @@
+#include "environment.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -22,7 +23,7 @@ void MainWindow::on_btnLogin_clicked()
     jsonObj.insert("username",username);
     jsonObj.insert("password",password);
 
-    QString site_url="http://localhost:3000/login";
+    QString site_url=Environment::getBaseUrl()+"/login";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
