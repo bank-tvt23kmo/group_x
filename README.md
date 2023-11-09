@@ -36,3 +36,12 @@ Ja lisään .gitignoreen rivin
 <pre>
 backend/.env
 </pre>
+
+## Tietokanta yhteys .env:ssä
+
+Jos backendin haluaa viedä johonkin pilvipalveluun (esim. Render), kannattaa tietokannan "määritys-stringi" kirjoittaa ympäristömuuttujiin. 
+Tässä esimerkissä lisäsin **.env**-tiedostoon rivin 
+<pre>
+SQL_SERVER=mysql://peppiuser:peppipass@localhost:3306/peppi
+</pre>
+Ja sitten Renderissä luon "environment muuttujan" nimeltään SQL_SERVER, mutta siinä viittaan eri tietokantaan, joka minulla on **db4free.net**-palvelussa.
