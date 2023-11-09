@@ -45,3 +45,14 @@ Tässä esimerkissä lisäsin **.env**-tiedostoon rivin
 SQL_SERVER=mysql://peppiuser:peppipass@localhost:3306/peppi
 </pre>
 Ja sitten Renderissä luon "environment muuttujan" nimeltään SQL_SERVER, mutta siinä viittaan eri tietokantaan, joka minulla on **db4free.net**-palvelussa.
+
+Ja tiedostossa **database.js** on seuraava koodi 
+<pre>
+const mysql = require('mysql2');
+const dotenv=require('dotenv');
+dotenv.config();
+
+const connection=mysql.createPool(process.env.SQL_SERVER);
+
+module.exports = connection;
+</pre>
