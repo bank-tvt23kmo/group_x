@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 
@@ -23,6 +24,7 @@ public:
     QPushButton *btnLogin;
     QLineEdit *textUsername;
     QLineEdit *textPassword;
+    QLabel *labelInfo;
 
     void setupUi(QDialog *LoginUi)
     {
@@ -38,6 +40,9 @@ public:
         textPassword = new QLineEdit(LoginUi);
         textPassword->setObjectName("textPassword");
         textPassword->setGeometry(QRect(90, 90, 113, 22));
+        labelInfo = new QLabel(LoginUi);
+        labelInfo->setObjectName("labelInfo");
+        labelInfo->setGeometry(QRect(60, 210, 291, 41));
 
         retranslateUi(LoginUi);
 
@@ -47,7 +52,8 @@ public:
     void retranslateUi(QDialog *LoginUi)
     {
         LoginUi->setWindowTitle(QCoreApplication::translate("LoginUi", "Dialog", nullptr));
-        btnLogin->setText(QCoreApplication::translate("LoginUi", "PushButton", nullptr));
+        btnLogin->setText(QCoreApplication::translate("LoginUi", "Login", nullptr));
+        labelInfo->setText(QCoreApplication::translate("LoginUi", "TextLabel", nullptr));
     } // retranslateUi
 
 };
