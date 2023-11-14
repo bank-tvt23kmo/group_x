@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -71,4 +72,22 @@ void MainWindow::loginSlot(QNetworkReply *reply)
 }
 
 
+
+
+void MainWindow::on_btnLoginDll_clicked()
+{
+    objectMyLogin = new MyLogin;
+    objectMyLogin->openUI();
+
+    connect(objectMyLogin, SIGNAL(loginReadySignal()), this, SLOT(myLoginResponseSLOT()));
+
+}
+
+void MainWindow::myLoginResponseSLOT()
+{
+    qDebug()<<"myLoginResponseSLOT";
+    token=objectMyLogin->getLoginResponse();
+    delete objectMyLogin;
+    qDebug()<<token;
+}
 

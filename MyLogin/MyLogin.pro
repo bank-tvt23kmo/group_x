@@ -28,3 +28,4 @@ unix {
 
 FORMS += \
     loginui.ui
+

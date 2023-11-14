@@ -34,3 +34,9 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+
+win32: LIBS += -L$$PWD/../MyLogin/build/debug/ -lMyLogin
+
+INCLUDEPATH += $$PWD/../MyLogin
+DEPENDPATH += $$PWD/../MyLogin

@@ -1,6 +1,7 @@
 #ifndef LOGINUI_H
 #define LOGINUI_H
 
+#include <QObject>
 #include <QDialog>
 #include <QMainWindow>
 #include <QtNetwork>
@@ -18,11 +19,12 @@ class LoginUi : public QDialog
 public:
     explicit LoginUi(QWidget *parent = nullptr);
     ~LoginUi();
-    QString getLoginResponse();
+
+    QByteArray getHttpResponse() const;
 
 private slots:
     void on_btnLogin_clicked();
-    void httpRequestSLOT();
+    void httpRequestSLOT(QNetworkReply*);
 
 private:
     Ui::LoginUi *ui;

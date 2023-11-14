@@ -5,21 +5,26 @@
 #include <LoginUi.h>
 #include <QObject>
 
-class MYLOGIN_EXPORT MyLogin
+class MYLOGIN_EXPORT MyLogin: public QObject
 {
+    Q_OBJECT
+
 public:
     MyLogin();
+    ~MyLogin();
     void openUI();
+
+    QByteArray getLoginResponse() const;
 
 private slots:
     void loginReadySLOT();
 
+private:
+    QByteArray loginResponse;
+    LoginUi *objectLoginUi;
+
 signals:
     void loginReadySignal();
-
-private:
-    QString loginResponse;
-    LoginUi *objectLoginUi;
 };
 
 #endif // MYLOGIN_H

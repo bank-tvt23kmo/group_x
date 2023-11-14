@@ -44,16 +44,18 @@ static constexpr auto qt_meta_stringdata_CLASSLoginUiENDCLASS = QtMocHelpers::st
     "httpResponseReadySignal",
     "",
     "on_btnLogin_clicked",
-    "httpRequestSLOT"
+    "httpRequestSLOT",
+    "QNetworkReply*"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSLoginUiENDCLASS_t {
-    uint offsetsAndSizes[10];
+    uint offsetsAndSizes[12];
     char stringdata0[8];
     char stringdata1[24];
     char stringdata2[1];
     char stringdata3[20];
     char stringdata4[16];
+    char stringdata5[15];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSLoginUiENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -63,13 +65,15 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSLoginUiENDCLASS_t qt_meta_strin
         QT_MOC_LITERAL(8, 23),  // "httpResponseReadySignal"
         QT_MOC_LITERAL(32, 0),  // ""
         QT_MOC_LITERAL(33, 19),  // "on_btnLogin_clicked"
-        QT_MOC_LITERAL(53, 15)   // "httpRequestSLOT"
+        QT_MOC_LITERAL(53, 15),  // "httpRequestSLOT"
+        QT_MOC_LITERAL(69, 14)   // "QNetworkReply*"
     },
     "LoginUi",
     "httpResponseReadySignal",
     "",
     "on_btnLogin_clicked",
-    "httpRequestSLOT"
+    "httpRequestSLOT",
+    "QNetworkReply*"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -93,14 +97,14 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSLoginUiENDCLASS[] = {
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
        3,    0,   33,    2, 0x08,    2 /* Private */,
-       4,    0,   34,    2, 0x08,    3 /* Private */,
+       4,    1,   34,    2, 0x08,    3 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 5,    2,
 
        0        // eod
 };
@@ -119,7 +123,8 @@ Q_CONSTINIT const QMetaObject LoginUi::staticMetaObject = { {
         // method 'on_btnLogin_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'httpRequestSLOT'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QNetworkReply *, std::false_type>
     >,
     nullptr
 } };
@@ -132,8 +137,19 @@ void LoginUi::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         switch (_id) {
         case 0: _t->httpResponseReadySignal(); break;
         case 1: _t->on_btnLogin_clicked(); break;
-        case 2: _t->httpRequestSLOT(); break;
+        case 2: _t->httpRequestSLOT((*reinterpret_cast< std::add_pointer_t<QNetworkReply*>>(_a[1]))); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 2:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QNetworkReply* >(); break;
+            }
+            break;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
@@ -145,7 +161,6 @@ void LoginUi::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
             }
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *LoginUi::metaObject() const
@@ -172,7 +187,7 @@ int LoginUi::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 3)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 3;
     }
     return _id;
